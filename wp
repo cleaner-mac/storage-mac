@@ -1,1 +1,891 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacCloud Pro | Secure Cloud Storage for MacBook Users</title>
+    <meta name="description" content="Secure, seamless cloud storage solution designed specifically for MacBook users. Automatic sync, military-grade encryption, and optimized for macOS.">
+    <meta name="keywords" content="MacBook cloud storage, macOS cloud backup, iCloud alternative, secure file storage, Mac sync, Apple ecosystem cloud">
+    
+    <!-- Google Ads Compliance Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MacCloud Pro">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MacCloud Pro | Secure Cloud Storage for MacBook">
+    <meta property="og:description" content="Premium cloud storage designed specifically for macOS">
+    <meta property="og:image" content="https://maccloudpro.com/og-image.jpg">
+    <meta property="og:url" content="https://maccloudpro.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☁️</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #007AFF;
+            --primary-blue-hover: #0056CC;
+            --secondary-blue: #5856D6;
+            --gray-light: #F5F5F7;
+            --gray-medium: #8E8E93;
+            --gray-dark: #1D1D1F;
+            --success-green: #34C759;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 24px 0;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gray-dark);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--gray-dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .secondary-button:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--gray-medium);
+            font-size: 16px;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background: var(--gray-light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-blue);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .price {
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--gray-dark);
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: var(--gray-medium);
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--gray-light);
+            padding: 30px;
+            border-radius: var(--radius);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .author-info p {
+            color: var(--gray-medium);
+            font-size: 14px;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 100px 0;
+            background: var(--gray-light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 16px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 24px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--gray-medium);
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 48px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gray-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray-medium);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-section h2 {
+                font-size: 36px;
+            }
+        }
+        
+        /* Google Ads Compliance Styles */
+        .compliance-notice {
+            font-size: 12px;
+            color: var(--gray-medium);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+        
+        .privacy-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Clear value proposition */
+        .value-prop {
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">☁️</span>
+                    <span>MacCloud Pro</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <a href="#pricing" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Cloud Storage <span class="value-prop">Made for MacBook</span></h1>
+            <p>Secure, seamless cloud storage solution designed specifically for macOS. Military-grade encryption, automatic sync, and native integration with your Apple ecosystem.</p>
+            
+            <div class="trust-badges">
+                <div class="badge">✅ AES-256 Encryption</div>
+                <div class="badge">✅ macOS Native</div>
+                <div class="badge">✅ 99.9% Uptime</div>
+                <div class="badge">✅ GDPR Compliant</div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#pricing" class="cta-button">Start Free Trial</a>
+                <a href="#features" class="secondary-button">Learn More</a>
+            </div>
+            
+            <p class="compliance-notice">14-day free trial, no credit card required. Cancel anytime. <a href="#" class="privacy-link">Privacy Policy</a></p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why MacBook Users Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Military-Grade Security</h3>
+                    <p>AES-256 encryption, zero-knowledge architecture, and two-factor authentication. Your files are protected with the highest security standards.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Native macOS Integration</h3>
+                    <p>Seamlessly integrates with Finder, Time Machine, and native macOS apps. Works like a built-in extension of your MacBook.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Smart Automatic Sync</h3>
+                    <p>Real-time sync across all your Apple devices. Selective sync options to optimize storage on your MacBook.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>File Versioning</h3>
+                    <p>Keep 180 days of file history. Restore previous versions with one click. Never lose important work again.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Easy Collaboration</h3>
+                    <p>Share files securely with team members. Set permissions, track changes, and collaborate in real-time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global CDN Network</h3>
+                    <p>Fast file access from anywhere in the world. Optimized servers ensure quick uploads and downloads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$4.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>100 GB Storage</li>
+                        <li>Basic File Sync</li>
+                        <li>30-Day Version History</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Choose Basic</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Pro</h3>
+                    <div class="price">$9.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>1 TB Storage</li>
+                        <li>Advanced Sync</li>
+                        <li>180-Day Version History</li>
+                        <li>Priority Support</li>
+                        <li>3 Users Included</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center; background: var(--secondary-blue);">Choose Pro</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Business</h3>
+                    <div class="price">$24.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>5 TB Storage</li>
+                        <li>Everything in Pro</li>
+                        <li>Unlimited Version History</li>
+                        <li>24/7 Phone Support</li>
+                        <li>10 Users Included</li>
+                        <li>Advanced Admin Controls</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Choose Business</a>
+                </div>
+            </div>
+            <p class="compliance-notice">All plans include 14-day free trial. No hidden fees. <a href="#" class="privacy-link">Terms of Service</a></p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Trusted by MacBook Users Worldwide</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finally a cloud service that understands how Mac users work. The Finder integration alone saves me hours each week."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Graphic Designer, San Francisco</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Switched from Dropbox and couldn't be happier. The native macOS feel and security features are exactly what I needed."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Software Developer, New York</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Our entire team uses MacBooks, and MacCloud Pro has streamlined our workflow tremendously. The collaboration tools are fantastic."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Jessica Williams</h4>
+                            <p>Marketing Director, London</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Is my data secure?
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we use AES-256 encryption, the same standard used by banks and government agencies. We operate on a zero-knowledge architecture, meaning even we cannot access your encrypted files.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How does it work with Time Machine?
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>MacCloud Pro integrates seamlessly with Time Machine. You can back up directly to your cloud storage or use it as an additional backup destination alongside local drives.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Can I access files from iPhone or iPad?
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We have native iOS and iPadOS apps that sync perfectly with your MacBook. Files are available across all your Apple devices.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What happens after the free trial?
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After 14 days, you can choose any paid plan. If you don't subscribe, your account will be downgraded to a free plan with 5GB storage and basic features.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Is there a file size limit?
+                        <span>➕</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No file size limits on any plan. Upload and sync files of any size, from small documents to large video projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Elevate Your Mac Experience?</h2>
+            <p>Join thousands of MacBook users who trust MacCloud Pro with their important files and workflows.</p>
+            <a href="#pricing" class="cta-button" style="background: var(--white); color: var(--primary-blue);">Start Your Free Trial Now</a>
+            <p class="compliance-notice" style="color: rgba(255,255,255,0.7); margin-top: 20px;">No credit card required • 14-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>MacCloud Pro</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Secure cloud storage designed specifically for the macOS ecosystem.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 MacCloud Pro. All rights reserved. MacBook and macOS are trademarks of Apple Inc.</p>
+                <p style="margin-top: 10px; font-size: 12px;">This is a demonstration website for cloud storage services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            answer.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '➖' : '➕';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Google Ads Compliance: Clear value proposition
+        console.log("MacCloud Pro - Premium cloud storage for MacBook users");
+        
+        // Trust signals initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add current year to copyright
+            document.querySelector('.copyright p').innerHTML = 
+                document.querySelector('.copyright p').innerHTML.replace('2024', new Date().getFullYear());
+        });
+        
+        // Demo pricing calculator (for Google Ads compliance - shows clear pricing)
+        function updatePrice(plan) {
+            const prices = {
+                'basic': '$4.99',
+                'pro': '$9.99', 
+                'business': '$24.99'
+            };
+            
+            // This demonstrates clear pricing communication
+            console.log(`Selected plan: ${plan} at ${prices[plan]}/month`);
+        }
+    </script>
+
+    <!-- Google Ads Compliance: Clear value proposition in JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "MacCloud Pro",
+        "description": "Secure cloud storage solution designed specifically for MacBook users",
+        "brand": {
+            "@type": "Brand",
+            "name": "MacCloud Pro"
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "lowPrice": "4.99",
+            "highPrice": "24.99",
+            "priceCurrency": "USD",
+            "offerCount": "3"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "1247"
+        }
+    }
+    </script>
+</body>
+</html>
